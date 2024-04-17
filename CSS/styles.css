@@ -1,0 +1,17 @@
+body {
+    height: 100vh;
+}
+
+.container {
+    
+} 
+
+.col {
+    width: 14vw;
+    height: 15vw;
+}
+
+.row {
+    flex-wrap: nowrap;
+    flex: 1 1 0;
+}
