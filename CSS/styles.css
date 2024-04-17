@@ -22,9 +22,10 @@ h1 {
 }
 
 footer {
-    align-tracks: ;
+    display: flex;
+    justify-content: center;
 }
 
 button {
-    margin: auto;
+    
 }
