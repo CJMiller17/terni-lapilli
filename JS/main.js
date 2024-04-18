@@ -8,6 +8,7 @@ const tiles = document.querySelectorAll(".tile");
 const winner = document.getElementById("winner");
 const multiPurposeBtn = document.getElementById("multiPurposeBtn");
 const gameBoard = document.getElementById("gameBoard");
+let currentPlayer = null;
 //gameBoard.classList.toggle("d-none")
 
 
@@ -15,16 +16,19 @@ tiles.forEach((element, i) => {
     element.addEventListener("click", e => playerSelection(e))
     element.index = i;
     element.textContent = "";
+    element.clicked = false;
 });
-
+//I dont understand how the for.each connects to my playerSelection
 function playerSelection(event) {
-    console.log(event.target.index);
-    const currentPlayer = board.player.one.turn ? board.player.one : board.player.two;
+    currentPlayer = board.player.one.turn ? board.player.one : board.player.two;
     const index = event.target.index;
     console.log("current player: ", currentPlayer)
-    event.target.textContent = currentPlayer.team;
-    playerPlacements(currentPlayer, index);
-    nextPlayerTurn();
+    if (!event.target.clicked) {
+        event.target.textContent = currentPlayer.team;
+        event.target.clicked = true;
+        playerPlacements(currentPlayer, index);
+        nextPlayerTurn();
+    }    
 };
 
 function playerPlacements(player, index) {
@@ -38,18 +42,26 @@ function nextPlayerTurn() {
     board.player.two.turn = !board.player.two.turn;
 }
 
-console.log(tiles);
+function checkForVictory() {
+    const victoryCondition = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    
+    for (const condition of victoryCondition) {
+        if (condition.every(element => currentPlayer.placements.includes(element))) {
+            console.log(currentPlayer.team + " wins!")
+            return true
+        }
+}
 
-const victory = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+console.log(tiles);
 
 const board = {
   state: null,
@@ -60,7 +72,7 @@ const board = {
       name: null,
       score: null,
       turn: true,
-      placements: [],
+      placements: [6,2,4],
     },
     two: {
       team: "O",
@@ -83,7 +95,7 @@ const board = {
 
 
 
-// gameBoard.attributeStyleMap(hideen, gameBoard.hidden)
+// gameBoard.attributeStyleMap(hidden, gameBoard.hidden)
 /*
 -- Functions --
 Start the game - Generate the board.
