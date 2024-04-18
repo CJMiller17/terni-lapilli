@@ -21,11 +21,7 @@ h1 {
     text-align: center;
 }
 
-footer {
+.button {
     display: flex;
     justify-content: center;
-}
-
-button {
-    
 }

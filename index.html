@@ -12,34 +12,36 @@
 
   <body>
     <header>
-        <h1> Tic - Tac - Toe</h1>
+        <h1 class="m-5"> Tic - Tac - Toe</h1>
+        <article id="winner"></article>
     </header>
-    <main class="container">
-        <section class="row row-cols-3 justify-content-center">
-            <div class="col d-flex justify-content-center align-items-center bg-primary border-bottom border-end border-5 border-dark">col 1</div>
-            <div class="col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 2</div>
-            <div class="col d-flex justify-content-center align-items-center border-bottom border-5 border-dark">col 3</div>
+    <main class="container" id="gameBoard">
+        <section class="row row-cols-3 justify-content-center" id="section1">
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 1</div>
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 2</div>
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-5 border-dark">col 3</div>
         </section>
 
-        <section class="row row-cols-3 justify-content-center">
-            <div class="col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 4</div>
-            <div class="col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 5</div>
-            <div class="col d-flex justify-content-center align-items-center border-bottom border-5 border-dark">col 6</div>
+        <section class="row row-cols-3 justify-content-center" id="section-2">
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 4</div>
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-end border-5 border-dark">col 5</div>
+            <div class="tile col d-flex justify-content-center align-items-center border-bottom border-5 border-dark">col 6</div>
         </section>
 
-        <section class="row row-cols-3 justify-content-center">
-            <div class="col d-flex justify-content-center align-items-center border-end border-5 border-dark">col 7</div>
-            <div class="col d-flex justify-content-center align-items-center border-end border-5 border-dark">col 8</div>
-            <div class="col d-flex justify-content-center align-items-center">col 9</div>
+        <section class="row row-cols-3 justify-content-center" id="section-3">
+            <div class="tile col d-flex justify-content-center align-items-center border-end border-5 border-dark">col 7</div>
+            <div class="tile col d-flex justify-content-center align-items-center border-end border-5 border-dark">col 8</div>
+            <div class="tile col d-flex justify-content-center align-items-center">col 9</div>
         </section>
-
     </main>
     
     <aside></aside>
     <aside></aside>
-
-    <footer>
-        <button type="button" class="btn btn-primary">Restart Game</button>
+    <article class="button"> 
+      <button id="multiPurposeBtn" type="button" class="btn btn-primary m-5">Restart Game</button>
+    </article>
+    <footer class="d-flex">
+     <p class="rules mx-auto" hidden>Rules</p> 
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
