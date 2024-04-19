@@ -153,6 +153,7 @@ function playerSelection(event) {
     console.log("current player: ", currentPlayer)
     if (!event.target.clicked) {
         event.target.textContent = currentPlayer.team; //This makes it an X or an O
+        event.target.style.color = currentPlayer.team === "X" ? "red" : "blue"
         event.target.clicked = true;
         playerPlacements(currentPlayer, index);
         clickCount++;
@@ -186,7 +187,6 @@ function checkForVictory() {
     
     for (const condition of victoryCondition) {
         if (condition.every(element => currentPlayer.placements.includes(element))) {
-            console.log(currentPlayer.team + " wins!")
             return currentPlayer.team;
         }
     }

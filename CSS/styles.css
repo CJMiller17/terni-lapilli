@@ -1,5 +1,18 @@
 body {
     height: 100vh;
+    animation-name: alternate;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes alternate {
+  0%   {background-color: #4793af;}
+  25%  {background-color: #3f849d;}
+  50%  {background-color: #38758c;}
+  100% {background-color: #31667a;}
+  50%  {background-color: #38758c;}
+  25%  {background-color: #3f849d;}
+  0%   {background-color: #4793af;}
 }
 
 .col {
@@ -29,6 +42,7 @@ h1 {
 
 article {
     text-align: center;
+    line-height: 1em;
     margin: auto;
     font-size: 3.5rem;
 }
