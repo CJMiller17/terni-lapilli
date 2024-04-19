@@ -5,6 +5,8 @@ const winner = document.getElementById("winner");
 const errorMessage = document.querySelectorAll(".errorMessage");
 const playerOneLabel = document.getElementById("playerOne");
 const playerTwoLabel = document.getElementById("playerTwo");
+const playerOneScore = document.getElementById("playerOneScore");
+const playerTwoScore = document.getElementById("playerTwoScore");
 const multiPurposeBtn = document.getElementById("multiPurposeBtn");
     multiPurposeBtn.addEventListener("click", beginPlaying);
 const playerOneName = document.getElementById("playerOneName");
@@ -23,14 +25,14 @@ const board = {
     one: {
       team: "X",
       name: null,
-      score: null,
+      score: 0,
       turn: true,
       placements: [],
     },
     two: {
       team: "O",
       name: null,
-      score: null,
+      score: 0,
       turn: false,
       placements: [],
     },
@@ -140,7 +142,9 @@ function scoreBoardFormat() {
 };
 
 function keepingScore() {
-
+    currentPlayer.score = currentPlayer.score + 1;
+    playerOneScore.textContent = `Score: ${board.player.one.score}`;
+    playerTwoScore.textContent = `Score: ${board.player.two.score}`;
 }
 
 function playerSelection(event) {
@@ -158,6 +162,7 @@ function playerSelection(event) {
                 displayMessage("Y'all tied");
             } else {
                 displayMessage(currentPlayer.name + " wins!");
+                keepingScore();
             }
             disableTiles();
         } else {
