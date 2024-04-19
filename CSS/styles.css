@@ -3,16 +3,13 @@ body {
     animation-name: alternate;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 @keyframes alternate {
-  0%   {background-color: #4793af;}
-  25%  {background-color: #3f849d;}
-  50%  {background-color: #38758c;}
-  100% {background-color: #31667a;}
-  50%  {background-color: #38758c;}
-  25%  {background-color: #3f849d;}
-  0%   {background-color: #4793af;}
+  0%   {background-color: #b5d3df;}
+  100% {background-color: #7eb3c7;}
+
 }
 
 .col {
