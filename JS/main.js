@@ -1,18 +1,24 @@
-/* 
---- Must Have ---
-Create game times that are clickable only once.
-Display winner or if there was a tie.
-Alternate turns, placing an O or an X.
-*/
 let currentPlayer = null;
 let clickCount = 0;
 const tiles = document.querySelectorAll(".tile");
 const winner = document.getElementById("winner");
+const errorMessage = document.querySelectorAll(".errorMessage");
+const playerOneLabel = document.getElementById("playerOne");
+const playerTwoLabel = document.getElementById("playerTwo");
 const multiPurposeBtn = document.getElementById("multiPurposeBtn");
     multiPurposeBtn.addEventListener("click", beginPlaying);
+const playerOneName = document.getElementById("playerOneName");
+    playerOneName.addEventListener("input", function () {
+      board.player.one.name = playerOneName.value;
+    });
+const playerTwoName = document.getElementById("playerTwoName");
+    playerTwoName.addEventListener("input", function () {
+      board.player.two.name = playerTwoName.value;
+    });
+
 const board = {
   state: null,
-  hidden: false, /////////////////////////////////////////////////////
+  hidden: false,
   player: {
     one: {
       team: "X",
@@ -37,14 +43,23 @@ tiles.forEach((element, i) => {
     element.index = i;
     element.textContent = "";
     element.clicked = false;
+    errorMessageVisibility(false);
+
 });
 
 function beginPlaying() {
-    gameBoard.hidden = false;  /////////////////////////////////////////////////////
+    if (!board.player.one.name || !board.player.two.name) {
+        alert("Please enter names for both players.");
+        errorMessageVisibility(true);
+    return; // <-- This return statement exits the function here
+}
+    gameBoard.hidden = false;
   multiPurposeBtn.textContent = gameBoard.hidden ? "Start Game" : "Restart Game"; 
   if (!gameBoard.hidden) {
+    errorMessageVisibility(false);
+    scoreBoardFormat();
     restartGame();
-    displayMessage("It's " + (board.player.one.turn ? board.player.one.team : board.player.two.team) +"'s turn."
+    displayMessage("It's " + (board.player.one.turn ? board.player.one.name : board.player.two.name) +"'s turn."
        );
     };
 };
@@ -109,6 +124,25 @@ function disableTiles() {
   });
 };
 
+function errorMessageVisibility(visible) {
+    errorMessage.forEach((p) => {
+        p.style.visibility = visible ? "visible" : "hidden"
+    })
+}
+
+function scoreBoardFormat() {
+    playerOneLabel.textContent = board.player.one.name;
+    playerTwoLabel.textContent = board.player.two.name;
+    playerOneLabel.style.marginRight = "1em";
+    playerTwoLabel.style.marginRight = "1em";
+    playerOneName.style.display = "none";
+    playerTwoName.style.display = "none";
+};
+
+function keepingScore() {
+
+}
+
 function playerSelection(event) {
     currentPlayer = board.player.one.turn ? board.player.one : board.player.two;  //Is this returning board.player.two to be true?
     const index = event.target.index;
@@ -123,12 +157,12 @@ function playerSelection(event) {
             if (result === "tie") {
                 displayMessage("Y'all tied");
             } else {
-                displayMessage(currentPlayer.team + " wins!");
+                displayMessage(currentPlayer.name + " wins!");
             }
             disableTiles();
         } else {
             nextPlayerTurn();
-            displayMessage("It's " + (board.player.one.turn ? board.player.one.team : board.player.two.team) + "'s turn.");
+            displayMessage("It's " + (board.player.one.turn ? board.player.one.name : board.player.two.name) + "'s turn.");
         };
     };
 };
@@ -156,51 +190,3 @@ function checkForVictory() {
         return "tie";
     }
 };
-
-//Here is how I plan on 
-
-// const isSubset = (array1, array2) =>
-//   array2.every((element) => array1.includes(element));
-
-// console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 7, 6])); // true
-// console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 8, 7])); // false
-
-
-
-
-// gameBoard.attributeStyleMap(hidden, gameBoard.hidden)
-/*
-
-/*
-Place a piece on a time.
-Enter a name.
-Update the score.
-Restart the game.
-Winner message.
-*/
-
-/* 
---- Should Have ---
-Display players turn.
-Restart button that doesn't refresh the page.
-*/
-
-/*
---- Could Have ---
-Allow players to enter their names.
-Keep track of the number os games won by X and won by O.
-Save the information into local storage.
-Add a link to the rules.
-Selectable themes.
-Randomize who goes first.
-Drag and Drop.
-One player mode.
-    -- Loader that simulates thinking.
-Comment Bubble the generates trask talk or encouraging.
-*/
-
-/*
---- Wish List ---
-Turn the game into Connect Four.
-Recreate Go.
-*/

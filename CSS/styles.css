@@ -2,13 +2,9 @@ body {
     height: 100vh;
 }
 
-.container {
-    
-} 
-
 .col {
-    width: 14vw;
-    height: 15vw;
+    width: 13.5vw;
+    height: 13.5vw;
 }
 
 .row {
@@ -41,4 +37,25 @@ article {
   article {
     font-size: 5rem;
     }
+}
+
+input {
+    width: 8em;
+}
+
+label {
+    margin-left: 1em;
+}
+
+.player-one {
+    margin-top: 2em;
+}
+
+aside {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    text-align: center;
 }

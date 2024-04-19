@@ -12,8 +12,8 @@
 
   <body>
     <header>
-        <h1 class="mt-5 mb-3"> Tic - Tac - Toe</h1>
-        <article id="winner" class="m-2 text-center">Welcome!</article>
+        <h1 class="mt-4 mb-3"> Tic - Tac - Toe</h1>
+        <article id="winner" class="m-4 text-center">Welcome!</article>
     </header>
     <main class="container" id="gameBoard" hidden>
         <section class="row row-cols-3 justify-content-center" id="section1">
@@ -35,21 +35,24 @@
         </section>
     </main>
     
-    <aside class="mb-3">
-      <label for="playerOneName">Player One Name:</label>
-      <input type="text" id="playerOneName" name="playerOneName" placeholder="Player One...">
+    <aside class=" player-one">
+      <label id="playerOne" for="playerOneName">Name:</label>
+      <input class="mx-2" type="text" id="playerOneName" name="playerOneName" placeholder="Player One...">
       <span id="playerOneScore">Score: 0</span>
     </aside>
-  
+    <p class="mb-4 text-danger errorMessage">**Please Enter a Player Name**</p>
+    
     <aside>
-      <label for="playerTwoName">Player Two Name:</label>
-      <input type="text" id="playerTwoName" name="playerTwoName" placeholder="Player Two...">
+      <label id="playerTwo" for="playerTwoName">Name:</label>
+      <input class="mx-2" type="text" id="playerTwoName" name="playerTwoName" placeholder="Player Two...">
       <span id="playerTwoScore">Score: 0</span>
     </aside>
+    <p class="text-danger d-block errorMessage">**Please Enter a Player Name**</p>
 
     <article class="button"> 
-      <button id="multiPurposeBtn" type="button" class="btn btn-primary m-5">Start Game</button>
+      <button id="multiPurposeBtn" type="button" class="btn btn-primary m-3">Start Game</button>
     </article>
+
     <footer class="d-flex">
      <p class="rules mx-auto" hidden>Rules</p> 
     </footer>
